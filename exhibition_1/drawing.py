@@ -50,7 +50,7 @@ def fence(posx, posy, s, frequency):
     pygame.display.update()
 
 
-def dog(posx, posy, s):
+def dog(posx, posy, s, a):
     s3 = pygame.Surface((210 * s, 200 * s)).convert_alpha()
     s3.fill([0, 0, 0, 0])
     ellipse(s3, dogBrown, (0, 160*s, 30*s, 15*s))
@@ -86,16 +86,19 @@ def dog(posx, posy, s):
     ellipse(s3, dogBrown, (26 * s, 53 * s, 65 * s, 30 * s))
     ellipse(s3, black, (26 * s, 53 * s, 65 * s, 30 * s), 1)
     rect(s3, dogBrown, (17 * s, 65 * s, 83 * s, 19 * s))
-
+    s3 = pygame.transform.flip(s3, a, False)
     sc.blit(s3, (posx, posy))
     pygame.display.update()
 
 
-fence(0, 200, 1, 20)
+fence(0, 200, 0.5, 20)
 house(350, 450, 1)
-dog(70, 501, 1.2)
-
-
+dog(70, 501, 1.2, False)
+fence(400, 100, 0.7, 10)
+fence(200, 300, 0.5, 10)
+fence(0, 400, 0.3, 10)
+dog(400, 450, 1, True)
+dog(550, 550, 3, False)
 
 
 while True:
