@@ -6,7 +6,7 @@ from pygame.draw import *
 
 FPS = 30
 pygame.init()
-screen = pygame.display.set_mode((400, 400))
+screen = pygame.display.set_mode((700, 700))
 Amount_of_balls = 4
 
 
@@ -57,11 +57,11 @@ def move_ball(xcirc, ycirc, rad, ball_speed, colour):
     :param ball_speed: ball speed array of moved ball
     :param colour: colour array of moved ball
     """
-    if xcirc + ball_speed[0] > 400 and xcirc > 0:
+    if xcirc + ball_speed[0] > screen.get_width() and xcirc > 0:
         ball_speed[0] = -ball_speed[0]
     elif xcirc + ball_speed[0] < 0 and xcirc < 0:
         ball_speed[0] = -ball_speed[0]
-    if ycirc + ball_speed[1] > 400 and ycirc > 0:
+    if ycirc + ball_speed[1] > screen.get_height() and ycirc > 0:
         ball_speed[1] = -ball_speed[1]
     elif ycirc + ball_speed[1] < 0 and ycirc < 0:
         ball_speed[1] = -ball_speed[1]
@@ -80,13 +80,12 @@ def new_ball(xcirc, ycirc, rad, ball_speed):
     :param ball_speed: ball speed array of replaced ball
     """
     circle(screen, (0, 0, 0), (xcirc, ycirc), rad)
-    ycirc = random.randint(50, 350)
-    xcirc = random.randint(50, 350)
+    ycirc = random.randint(50, screen.get_height())
+    xcirc = random.randint(50, screen.get_width())
     rad = random.randint(12, 50)
     ball_speed[0] = random.randint(-10, 15)
     ball_speed[1] = random.randint(-10, 10)
     colour = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
-    circle(screen, colour, (xcirc, ycirc), rad)
     return xcirc, ycirc, rad, ball_speed, colour
 
 
@@ -107,10 +106,10 @@ rad = [None] * Amount_of_balls
 ball_speed = []
 colour = []
 for i in range(Amount_of_balls):
-    ycirc[i] = random.randint(20, 380)
-    xcirc[i] = random.randint(20, 380)
+    ycirc[i] = random.randint(20, screen.get_height())
+    xcirc[i] = random.randint(20, screen.get_width())
     rad[i] = random.randint(12, 50)
-    ball_speed.append([random.randint(10,50), random.randint(10, 50)])
+    ball_speed.append([random.randint(10, 50), random.randint(10, 50)])
     colour.append([0, 0, 0])
 
 for i in range(len(xcirc)):
