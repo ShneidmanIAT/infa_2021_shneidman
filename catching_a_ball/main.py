@@ -4,7 +4,7 @@ import pygame
 from pygame.draw import *
 
 
-FPS = 30
+FPS = 100
 pygame.init()
 screen = pygame.display.set_mode((400, 400))
 Amount_of_balls = 4
@@ -15,8 +15,8 @@ def handle_events():
     gets the tap on screen or on the cross
     """
     finish_clicked = False
-    x = screen.get_width() + 1
-    y = screen.get_height() + 1
+    x = screen.get_width() + 100
+    y = screen.get_height() + 100
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             finish_clicked = True
@@ -78,7 +78,6 @@ def new_ball(xcirc, ycirc, rad, ball_speed):
     :param ycirc: y coord of replaced ball
     :param rad: rad coord of replaced ball
     :param ball_speed: ball speed array of replaced ball
-    :return:
     """
     circle(screen, (0, 0, 0), (xcirc, ycirc), rad)
     ycirc = random.randint(50, 350)
@@ -129,7 +128,7 @@ while not finished:
     score_to_screen(score)
     finished, xclick, yclick = handle_events()
     xcirc, ycirc, rad, score, ball_speed, colour = game_process(xcirc, ycirc, xclick, yclick, rad, score, ball_speed, colour)
-    xclick = screen.get_width() + 1
-    yclick = screen.get_height() + 1
+    xclick = screen.get_width() + 100
+    yclick = screen.get_height() + 100
     pygame.display.update()
 pygame.quit()
