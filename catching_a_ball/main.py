@@ -4,7 +4,7 @@ import pygame
 from pygame.draw import *
 
 
-FPS = 100
+FPS = 30
 pygame.init()
 screen = pygame.display.set_mode((400, 400))
 Amount_of_balls = 4
@@ -39,6 +39,7 @@ def game_process(xcirc, ycirc, xclick, yclick, rad, score, ball_speed, colour):
     :return:
     """
     for i in range(len(xcirc)):
+        circle(screen, (0, 0, 0), (xcirc[i], ycirc[i]), rad[i])
         if (xclick - xcirc[i])**2 + (yclick - ycirc[i])**2 < rad[i]**2:
             score += 10
             xcirc[i], ycirc[i], rad[i], ball_speed[i], colour[i] = new_ball(xcirc[i], ycirc[i], rad[i], ball_speed[i])
@@ -56,7 +57,6 @@ def move_ball(xcirc, ycirc, rad, ball_speed, colour):
     :param ball_speed: ball speed array of moved ball
     :param colour: colour array of moved ball
     """
-    circle(screen, (0, 0, 0), (xcirc, ycirc), rad)
     if xcirc + ball_speed[0] > 400 and xcirc > 0:
         ball_speed[0] = -ball_speed[0]
     elif xcirc + ball_speed[0] < 0 and xcirc < 0:
