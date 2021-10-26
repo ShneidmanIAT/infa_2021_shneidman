@@ -47,7 +47,6 @@ def game_process(xcirc, ycirc, xclick, yclick, rad, score, ball_speed, colour, r
     :param score: score of playa
     :param ball_speed: array of x and y speeds  of balls
     :param colour: array of colours of balls
-    :return:
     """
     for i in range(len(xcirc)):
         screen.fill((0, 0, 0))
@@ -120,6 +119,10 @@ def score_to_screen(score, name):
 
 
 def get_name(name):
+    """
+    gets the name typed to the programm
+    :param name:
+    """
     screen.fill((0, 0, 0))
     myfont = pygame.font.SysFont('Comic Sans MS', 30)
     namesurface = myfont.render(str(name), False, (0, 180, 0))
@@ -135,6 +138,9 @@ def get_name(name):
 
 
 def show_result():
+    """
+    gets the results from file and shows them
+    """
     f = open('results.txt', 'r')
     screen.fill((0, 0, 0))
     myfont = pygame.font.SysFont('Comic Sans MS', 30)
